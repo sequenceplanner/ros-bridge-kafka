@@ -1,0 +1,15 @@
+Hello,
+ 
+I just assembled a prototype of the Kafka-ROSBridge in Python, there are more things to be done (like checking if the tcp connections have already been established and then skip that part if it's true) but I just wanted to get it up and running to be able to test it and improve it asap. I would also like to add the possibility to do some things according to the received flag messages from kafka like: RESTART, STOP, PAUSE, AUTOKILL etc... but, maybe we will do that externally with sp? Sorry for the messy writing, again...
+
+dummy_ros_pub_sub.py publishes two strings on separate ROS topics with different frequencies.
+dummy_kafka_pro_con.py produces two strings on one Kafka topic (to_ros) with different frequencies, those messages are meant to be injected in an existing ROS topic or make a new one,  via the Kafka-ROSBrigde. The dummy_kafka_pro_con.py is consuming messages from the (from_ros) Kafka topic and is getting the data published on the ROS topics via the Kafka-ROSBridge (only messages from the topics it is subscribed to). 
+
+Required:
+roslaunch rosbridge_sevrer rosbridge_tcp.launch
+zookeeper server + kafka server (all in one in: confluent: confluent start)
+
+This is just the prototype version.
+
+Best regards,
+Endre
